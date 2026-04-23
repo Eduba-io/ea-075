@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>A read on where AI fits in Coally's stack. And where it doesn't.</title>
+<meta name="description" content="Five agents shipping under one roof. A senior AI advisor. A view on what the orchestration layer should look like before the sixth agent ships." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="favicon.png" />
+</head>
+<body>
+<div data-eduba="banner" style="background:#0a0a0a;color:#f5f5f5;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;letter-spacing:0.01em;border-bottom:1px solid #1f1f1f;position:relative;z-index:1000;">
+  <a href="https://eduba.io" target="_blank" rel="noopener" style="color:#f5f5f5;text-decoration:none;font-weight:800;font-size:17px;letter-spacing:-0.02em;line-height:1;">eduba</a>
+  <span style="opacity:0.88;">Prepared by Eduba for Coally &mdash; Emerge Americas 2026</span>
+</div>
+
+
+<div class="topbar" role="complementary" aria-label="Preparation note">
+  <div class="topbar-inner">
+    <div class="topbar-note">
+      <span class="only-en">Prepared for Coally. eMerge Americas.</span>
+      <span class="only-es">Preparado para Coally. eMerge Americas.</span>
+    </div>
+    <nav class="lang-toggle" aria-label="Language">
+      <a href="#" data-lang="en" class="is-active" aria-current="true">EN</a>
+      <a href="#" data-lang="es">ES</a>
+    </nav>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container site-header-inner">
+    <div class="brand">
+      <img src="logo.png" alt="Coally" />
+    </div>
+    <div class="header-meta">
+      <span class="only-en">A read from <strong>Matt Creamer</strong>. No deck.</span>
+      <span class="only-es">Una lectura de <strong>Matt Creamer</strong>. Sin pitch deck.</span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<main>
+<section class="hero" aria-labelledby="headline">
+  <div class="container">
+    <div class="eyebrow"><span class="dot" aria-hidden="true"></span>
+      <span class="only-en">eMerge Americas</span>
+      <span class="only-es">eMerge Americas</span>
+    </div>
+    <h1 class="headline" id="headline">
+      <span class="only-en">A read on where AI fits<br />in Coally's stack<span class="period">.</span> <span class="and-not">And where it doesn't.</span></span>
+      <span class="only-es">Una lectura sobre dónde la IA encaja<br />en el stack de Coally<span class="period">.</span> <span class="and-not">Y dónde no.</span></span>
+    </h1>
+    <p class="hero-lede">
+      <span class="only-en">Coally now ships five named agents under one roof. Cami, Dani, Isa, Sarah, and Susan sit between students, advisors, employers, and the university career office. That is a lot of surface area for a team of your size, and a senior AI Strategic Advisor signing on tells us the methodology bar is going up.</span>
+      <span class="only-es">Coally hoy opera cinco agentes con nombre propio bajo un mismo techo. Cami, Dani, Isa, Sarah y Susan se sitúan entre estudiantes, asesores, empleadores y la oficina de carrera universitaria. Es mucha superficie para un equipo de su tamaño, y la llegada de un AI Strategic Advisor de alto nivel indica que el listón metodológico está subiendo.</span>
+    </p>
+
+    <!-- Agent strip, echoing Coally's signature named-agent UI motif -->
+    <div class="agents-strip" aria-label="The five Coally agents">
+      <div class="agent">
+        <div class="agent-avatar agent-cami" aria-hidden="true">C</div>
+        <div class="agent-name">Cami</div>
+        <div class="agent-role">
+          <span class="only-en">Career coach</span>
+          <span class="only-es">Coach de carrera</span>
+        </div>
+      </div>
+      <div class="agent">
+        <div class="agent-avatar agent-dani" aria-hidden="true">D</div>
+        <div class="agent-name">Dani</div>
+        <div class="agent-role">
+          <span class="only-en">Options</span>
+          <span class="only-es">Opciones</span>
+        </div>
+      </div>
+      <div class="agent">
+        <div class="agent-avatar agent-isa" aria-hidden="true">I</div>
+        <div class="agent-name">Isa</div>
+        <div class="agent-role">
+          <span class="only-en">Matching</span>
+          <span class="only-es">Matching</span>
+        </div>
+      </div>
+      <div class="agent">
+        <div class="agent-avatar agent-sarah" aria-hidden="true">S</div>
+        <div class="agent-name">Sarah</div>
+        <div class="agent-role">
+          <span class="only-en">Skills</span>
+          <span class="only-es">Habilidades</span>
+        </div>
+      </div>
+      <div class="agent">
+        <div class="agent-avatar agent-susan" aria-hidden="true">S</div>
+        <div class="agent-name">Susan</div>
+        <div class="agent-role">
+          <span class="only-en">What to study</span>
+          <span class="only-es">Qué estudiar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK BREAKDOWN -->
+<section class="stack" aria-labelledby="stack-heading">
+  <div class="container stack-grid">
+    <div>
+      <div class="section-eyebrow">
+        <span class="only-en">The 60 · 30 · 10 read</span>
+        <span class="only-es">La lectura 60 · 30 · 10</span>
+      </div>
+      <h2 id="stack-heading">
+        <span class="only-en">How we'd think about your stack</span>
+        <span class="only-es">Cómo pensaríamos su stack</span>
+      </h2>
+      <p>
+        <span class="only-en">Here is how we would break the work a career agent actually does. Teams that skip this split end up paying OpenAI to do work Postgres would do faster, cheaper, and with better guarantees.</span>
+        <span class="only-es">Así es como separaríamos el trabajo que realmente hace un agente de carrera. Los equipos que se saltan esta división acaban pagándole a OpenAI por tareas que Postgres haría más rápido, más barato y con mejores garantías.</span>
+      </p>
+      <p>
+        <span class="only-en">A clean orchestration layer is the difference between a gross margin that improves with scale and one that collapses under it.</span>
+        <span class="only-es">Una capa de orquestación limpia es la diferencia entre un margen bruto que mejora con la escala y uno que se desploma con ella.</span>
+      </p>
+    </div>
+    <div>
+      <div class="split-bars">
+        <div class="bar bar-traditional">
+          <div class="bar-pct">60%</div>
+          <div>
+            <div class="bar-label">
+              <span class="only-en">Traditional code &amp; database</span>
+              <span class="only-es">Código tradicional y base de datos</span>
+            </div>
+            <div class="bar-desc">
+              <span class="only-en">Profile lookups, job filters, calendar holds, application state.</span>
+              <span class="only-es">Búsqueda de perfiles, filtros de vacantes, reservas de calendario, estado de postulación.</span>
+            </div>
+          </div>
+        </div>
+        <div class="bar bar-rules">
+          <div class="bar-pct">30%</div>
+          <div>
+            <div class="bar-label">
+              <span class="only-en">Rule-based logic</span>
+              <span class="only-es">Lógica basada en reglas</span>
+            </div>
+            <div class="bar-desc">
+              <span class="only-en">Which path routes to Susan for what-to-study versus Dani for think-through-options.</span>
+              <span class="only-es">Qué ruta envía a Susan para qué-estudiar versus a Dani para pensar-en-opciones.</span>
+            </div>
+          </div>
+        </div>
+        <div class="bar bar-ai">
+          <div class="bar-pct">10%</div>
+          <div>
+            <div class="bar-label">
+              <span class="only-en">Genuine AI</span>
+              <span class="only-es">IA genuina</span>
+            </div>
+            <div class="bar-desc">
+              <span class="only-en">Open-ended coaching turns where the model has to hold context, remember what the student said six weeks ago, and refuse to hallucinate a job that does not exist.</span>
+              <span class="only-es">Turnos abiertos de coaching donde el modelo debe retener contexto, recordar lo que dijo el estudiante hace seis semanas y negarse a inventar una vacante que no existe.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="stack-footnote">
+        <span class="only-en">Testable in 30 seconds with the Coally team. The question is what percentage of turns today actually need a 10% answer.</span>
+        <span class="only-es">Se puede validar en 30 segundos con el equipo de Coally. La pregunta es qué porcentaje de los turnos actuales realmente necesita una respuesta del 10%.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof" aria-labelledby="proof-heading">
+  <div class="container">
+    <h2 id="proof-heading">
+      <span class="only-en">A version of this conversation, already had</span>
+      <span class="only-es">Una versión de esta conversación, ya tenida</span>
+    </h2>
+    <div class="proof-grid">
+      <article class="proof-card">
+        <div class="proof-tag">
+          <span class="only-en">Matching engagement</span>
+          <span class="only-es">Engagement de referencia</span>
+        </div>
+        <h3 class="proof-title">Feeld · CTO-led engagement</h3>
+        <p>
+          <span class="only-en">Scoped sprint. Workshop, advisory calls, Organizational Context Architecture, Strategic Operations Framework.</span>
+          <span class="only-es">Sprint acotado. Workshop, sesiones de asesoría, Organizational Context Architecture y Strategic Operations Framework.</span>
+        </p>
+        <p>
+          <span class="only-en">Product company with a founder-CTO pairing running agentic systems internally, trying to figure out where human judgment, rules, and LLM calls each belong. The deliverable Feeld walked away with is the same one Coally would want: a shared context layer all five agents inherit from, a rule-set that routes turns to the right handler, and an eval framework that gives a procurement officer at a US university a credible answer when they ask how you keep Dani from inventing internships.</span>
+          <span class="only-es">Compañía de producto con pareja fundador-CTO operando sistemas agénticos internos, intentando decidir dónde entran el juicio humano, las reglas y las llamadas al LLM. El entregable que Feeld se llevó es el mismo que Coally querría: una capa de contexto compartida de la que heredan los cinco agentes, un set de reglas que enruta turnos al handler correcto, y un marco de evaluación que le dé a una oficina de compras en una universidad de EE. UU. una respuesta creíble cuando pregunte cómo evitan que Dani se invente prácticas.</span>
+        </p>
+        <div class="proof-meta">
+          <span class="only-en">Fit rationale: product company, founder-CTO pair, agentic stack, seed-stage budget shape.</span>
+          <span class="only-es">Razón del fit: compañía de producto, pareja fundador-CTO, stack agéntico, forma de presupuesto seed.</span>
+        </div>
+      </article>
+
+      <aside class="methodology-card">
+        <div class="proof-tag" style="color: var(--coally-pink);">
+          <span class="only-en">Published methodology</span>
+          <span class="only-es">Metodología publicada</span>
+        </div>
+        <h3 class="proof-title">Interpretable Context Methodology</h3>
+        <p>
+          <span class="only-en">Folder Structure as Agent Architecture. ACM TiiS submission. MIT-licensed. 52-member practitioner community already in production.</span>
+          <span class="only-es">Folder Structure as Agent Architecture. Envío a ACM TiiS. Licencia MIT. Comunidad de 52 profesionales ya en producción.</span>
+        </p>
+        <p>
+          <span class="only-en">Context organized as a layered filesystem. L0 identity through L4 working artifacts. Measurable interpretability and reproducibility gains.</span>
+          <span class="only-es">Contexto organizado como un sistema de archivos por capas. Desde L0 identidad hasta L4 artefactos de trabajo. Mejoras medibles en interpretabilidad y reproducibilidad.</span>
+        </p>
+        <div class="proof-meta">
+          <span class="only-en">Read the repo: </span>
+          <span class="only-es">Ver el repositorio: </span>
+          <a href="https://github.com/RinDig/Interpretable-Context-Methodology-ICM-" target="_blank" rel="noopener">github.com/RinDig/Interpretable-Context-Methodology-ICM-</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- NLP PARTNER -->
+<section class="partner">
+  <div class="container">
+    <div class="partner-inner">
+      <div class="partner-label">
+        <span class="only-en">Below the orchestration layer</span>
+        <span class="only-es">Debajo de la capa de orquestación</span>
+      </div>
+      <p>
+        <span class="only-en">Eduba partners with <a href="https://nlplogix.com" target="_blank" rel="noopener">NLP Logix</a> for work that sits below the orchestration layer. NLP Logix has been in machine learning since 2011 and runs over 150 data scientists. If the right next move for Coally is model routing, eval infrastructure, or production ML cost work, we bring them in under an existing partnership.</span>
+        <span class="only-es">Eduba se asocia con <a href="https://nlplogix.com" target="_blank" rel="noopener">NLP Logix</a> para el trabajo que queda por debajo de la capa de orquestación. NLP Logix lleva en machine learning desde 2011 y cuenta con más de 150 data scientists. Si el siguiente paso correcto para Coally es enrutamiento de modelos, infraestructura de evaluación, o control de costo de ML en producción, los incorporamos bajo una asociación ya existente.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" aria-labelledby="cta-heading">
+  <div class="container">
+    <div class="cta-card">
+      <div class="cta-eyebrow">
+        <span class="only-en">Next step</span>
+        <span class="only-es">Siguiente paso</span>
+      </div>
+      <h2 id="cta-heading">
+        <span class="only-en">30 minutes with Matt. Bring one agent turn you wish cost less.</span>
+        <span class="only-es">30 minutos con Matt. Traiga un turno de agente que quisiera que costara menos.</span>
+      </h2>
+      <p>
+        <span class="only-en">We will read the logs together. No deck. If the first five minutes feel off-topic, we end early and you keep the read above as notes.</span>
+        <span class="only-es">Revisamos los logs juntos. Sin pitch deck. Si los primeros cinco minutos no aportan, cerramos antes y se queda con esta lectura como apuntes.</span>
+      </p>
+      <div class="cta-row">
+        <a class="btn-primary" href="https://calendly.com/thecro-eduba/30min" target="_blank" rel="noopener">
+          <span class="only-en">Book a time</span>
+          <span class="only-es">Reservar un horario</span>
+          <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <div class="cta-contact">
+          <span class="only-en"><strong>Matt Creamer</strong>, CRO · Eduba · <a href="mailto:matt@eduba.io">matt@eduba.io</a></span>
+          <span class="only-es"><strong>Matt Creamer</strong>, CRO · Eduba · <a href="mailto:matt@eduba.io">matt@eduba.io</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer-inner">
+    <div>
+      <span class="only-en">Prepared by Eduba, <a href="https://eduba.io" target="_blank" rel="noopener">eduba.io</a>. Not a proposal. A read.</span>
+      <span class="only-es">Preparado por Eduba, <a href="https://eduba.io" target="_blank" rel="noopener">eduba.io</a> &middot; <a href="https://eduba.io/works" target="_blank" rel="noopener">More case studies</a>. No es una propuesta. Es una lectura.</span>
+    </div>
+    <div>
+      <span class="only-en">Jake also built an online community to 22,000 members in 5 weeks. Context on the distribution side of the equation.</span>
+      <span class="only-es">Jake también construyó una comunidad online de 22.000 miembros en 5 semanas. Contexto para el lado de distribución de la ecuación.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var buttons = document.querySelectorAll('.lang-toggle a[data-lang]');
+    function setLang(lang) {
+      root.setAttribute('lang', lang);
+      buttons.forEach(function (btn) {
+        var active = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('is-active', active);
+        if (active) {
+          btn.setAttribute('aria-current', 'true');
+        } else {
+          btn.removeAttribute('aria-current');
+        }
+      });
+    }
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        setLang(btn.getAttribute('data-lang'));
+      });
+    });
+  })();
+</script>
+
+<footer data-eduba="footer" style="background:#0a0a0a;color:#dcdcdc;padding:36px 20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;line-height:1.6;border-top:1px solid #1f1f1f;margin-top:48px;">
+  <div style="max-width:1040px;margin:0 auto;">
+    <div style="display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-start;">
+      <div style="min-width:240px;flex:1;">
+        <div style="margin-bottom:6px;"><a href="https://eduba.io" target="_blank" rel="noopener" style="color:#ffffff;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-0.02em;">eduba</a></div>
+        <div style="opacity:0.85;margin-bottom:4px;">Van Clief Media LLC, dba Eduba</div>
+        <div style="opacity:0.7;">Veteran-owned AI consulting and training firm</div>
+      </div>
+      <div style="min-width:220px;flex:1;">
+        <div style="color:#ffffff;font-weight:600;margin-bottom:2px;">Matt Creamer, CRO</div>
+        <div style="margin-bottom:10px;"><a href="mailto:thecro@eduba.io" style="color:#dcdcdc;text-decoration:underline;">thecro@eduba.io</a></div>
+        <div style="opacity:0.85;">Founder: Jake Van Clief</div>
+      </div>
+      <div style="min-width:180px;flex:1;">
+        <div style="margin-bottom:4px;"><a href="https://eduba.io" target="_blank" rel="noopener" style="color:#dcdcdc;text-decoration:underline;">eduba.io</a></div>
+        <div style="opacity:0.85;">Palm Coast, FL</div>
+      </div>
+    </div>
+    <div style="margin-top:24px;padding-top:16px;border-top:1px solid #1f1f1f;opacity:0.62;font-size:12px;line-height:1.55;">
+      This site was custom-built by Eduba as a conference pitch. It is not affiliated with or operated by Coally.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
